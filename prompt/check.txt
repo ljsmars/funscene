@@ -2,7 +2,7 @@
 Your task is to detect underutilized ODD (Operational Design Domain) elements by analyzing the provided trigger condition, the existing scenario list, and the ODD elements defined in the file. Based on this analysis, list the ODD elements that have not yet been utilized.
 
 # Background Knowledge
-Trigger conditions refer to specific conditions in a scenario that lead to the system¡¯s subsequent reaction, which contributes to harmful behaviors or the inability to prevent, detect, or mitigate indirect misuse. Trigger sources are the specific combinations of scenario elements that cause related expected functional safety issues.
+Trigger conditions refer to specific conditions in a scenario that lead to the systemÂ¡Â¯s subsequent reaction, which contributes to harmful behaviors or the inability to prevent, detect, or mitigate indirect misuse. Trigger sources are the specific combinations of scenario elements that cause related expected functional safety issues.
 
 # Task Instructions
 1.Extract ODD elements from the provided file.
