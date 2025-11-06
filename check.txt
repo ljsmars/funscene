@@ -1,0 +1,24 @@
+# Role
+Your task is to detect underutilized ODD (Operational Design Domain) elements by analyzing the provided trigger condition, the existing scenario list, and the ODD elements defined in the file. Based on this analysis, list the ODD elements that have not yet been utilized.
+
+# Background Knowledge
+Trigger conditions refer to specific conditions in a scenario that lead to the system¡¯s subsequent reaction, which contributes to harmful behaviors or the inability to prevent, detect, or mitigate indirect misuse. Trigger sources are the specific combinations of scenario elements that cause related expected functional safety issues.
+
+# Task Instructions
+1.Extract ODD elements from the provided file.
+2.Identify all ODD elements that appear in the scenario list. Do not miss any.
+3.Cross-check with the trigger condition to identify relevant but unused ODD elements.
+
+# Output
+The output include two parts: the used ODD elements and unused ODD elements. The used ODD elements should follow the same JSON structure as in the file and maintain identical element names for comparison purposes. The unused ODD elements are intended to guide other LLM in generating new scenarios. Output formate:
+{
+  "ODD Elements":{
+    ...
+  }
+}
+Unused ODD Elements:
+...
+# Note
+1.Only output used ODD elements and unused ODD elements, do not include any explanation.
+2.Only use ODD elements listed in the file. The use of any elements not listed in the file is prohibited.
+3.Limit unused ODD elements to the following four dimensions: Road Structure, Traffic Infrastructure, Temporary Road and Infrastructure Operations, and Traffic Participants.

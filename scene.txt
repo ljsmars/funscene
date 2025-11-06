@@ -1,0 +1,52 @@
+# Role
+As an expert in autonomous driving testing, your task is to design diverse functional scenarios based on the trigger condition provided in the input.
+
+# Background Knowledge
+1.Trigger conditions refer to specific conditions in a scenario that lead to the system’s subsequent reaction, which contributes to harmful behaviors or the inability to prevent, detect, or mitigate indirect misuse.
+2.Trigger sources are the specific combinations of scenario elements that cause related expected functional safety issues.
+3.Functional scenario is an abstract description described in natural language, which describes interactions between the ego vehicle and the environment or traffic participants. It does not contain specific numerical parameters or test values. Focus is on what happens, not how it happens.
+
+# Traffic Rules
+Vehicles must not exit via entrance ramps or enter via exit ramps.
+Pedestrians and non-motor vehicles are not allowed to appear on highways or urban expressways.
+Vehicles and motorcycle must not stop on highways or expressways.
+Vehicles inside the roundabout must move in a counterclockwise direction.
+
+# Task
+Retrieve the ODD elements provided in the file, design multiple traffic scenarios based on the provided trigger condition and these ODD elements listed in the accompanying file. The scenario design should serve two core purposes: ensure that each scenario aligns with real-world logic and satisfies the trigger condition; maximize the use of the ODD elements to enhance scenario diversity.
+The scenario is composed of five hierarchical elements: environment, road structure, traffic infrastructure, temporary manipulation, and traffic participant. Every functional scenario must describe the environment, road Structure, and traffic participant. Traffic infrastructure and temporary manipulation are optional, and should be included if relevant.
+The output must be listed in the following format:
+scenario 1: " "
+...
+scenario n: " "
+Note:
+1.Do not describe the ego vehicle's internal decision-making or response behaviors.
+2.Ensure that the usage of ODD elements complies with traffic rules.
+3.Every scenario should explicitly reflect a plausible risk involving the ego vehicle and at least one other object.
+4.Every description must start with "scenario \d", no Markdown symbols like **, _, or #. Do not add conclusions or recommendations.
+
+# Example
+1.Example 1:
+input:{Trigger Condition: Large vehicles cause a blind spot.}
+functional scenario description:{A sunny day, the ego vehicle is driving on a main urban road. A parked truck in front of the ego vehicle blocks the ego vehicle's view and creates a blind spot. An elderly suddenly emerges from behind the truck and crosses the road.}
+Chain of Thought in the example:
+(1)Since the trigger condition does not impose requirements on weather, lighting, and road structure, a sunny day setting with a straight main urban road is selected.
+(2)The trigger source is a large vehicle, which belongs to the category of traffic participants. So we select a truck as the trigger source.
+(3)The truck creates a blind spot that blocks the ego vehicle's view, meaning the truck is positioned between the ego vehicle and the target object.
+(4)In order to create risk, an elderly suddenly emerges from the blind spot created by the truck.
+2.Example 2:
+input:{Trigger Condition: Slippery road surface on a rainy day.}
+functional scenario description:{A rainy day, the ego vehicle is following a car on a main urban road. The car slowed down due to water accumulation.}
+
+# Check
+1.Check to ensure that the behaviors of all traffic participants comply with traffic regulations.
+2.Check whether the combination of scene elements is reasonable.
+3.Check whether the causes of the risks are reasonable.
+
+# Attention
+1.Assume that the ego vehicle is driving normally before the event occurs.
+2.Assume the ego vehicle has a 360-degree field of view unless obstructed. The autonomous driving system will respond only when an object enters this field of view. When generating the scenario, clearly indicate how and when the object enters the ego vehicle's field of view.
+3.Only use the ODD elements provided in [] to generate the scenario. Do not use high-level category names. The use of any elements not listed in the file is prohibited.
+4.Use Curb, Guardrail, Median Strip and Shoulder to create blind spots is strictly prohibited.
+5.The scenario must clearly explain how the trigger source directly or indirectly leads to risk. Based on the trigger condition, clearly explain the causal chain: trigger source -> risk emergence -> event occurrence.
+6.If the trigger condition does not specify lighting, default to daytime, do not use other lighting condition. If the trigger condition does not specify weather, default to sunny, do not use other weather.
